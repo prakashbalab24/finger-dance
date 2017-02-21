@@ -34,7 +34,7 @@ public class TileColorData {
 
         TileModel offerModel;
 
-        for (int i =1;i<=32;i++){
+        for (int i =1;i<=16;i++){
             randomColor = GeneralHelper.randInt(0,9);
             offerModel = new TileModel(context.getResources().getColor(color[randomColor]));
             tileModelList.add(offerModel);

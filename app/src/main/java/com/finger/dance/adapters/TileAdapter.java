@@ -25,9 +25,8 @@ public class TileAdapter extends RecyclerView.Adapter<TileAdapter.MyViewHolder> 
     private Context mContext;
     private List<TileModel> tileModelList;
     private TileModel tileModel;
-    private static int firstChange = -1;
+    private int firstChange = -1;
     private static int playerColor;
-    private List mActivePointers = new ArrayList();
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -86,21 +85,21 @@ public class TileAdapter extends RecyclerView.Adapter<TileAdapter.MyViewHolder> 
                 switch(event.getAction() & MotionEvent.ACTION_MASK)
                 {
                     case MotionEvent.ACTION_DOWN:
-                        mActivePointers.add(pointerId);
                         ColorDrawable cd = (ColorDrawable) holder.tileView.getBackground();
                         int colorCode = cd.getColor();
                         changeColor(colorCode);
                        return true;
                     case MotionEvent.ACTION_UP:
-                        Log.i("poiterindex",pointerId+"");
-                        if (mActivePointers.size()<=pointerId) {
-                            mActivePointers.remove(pointerId);
-                        }
-                        if(pointerId==0) {
+                        if (pointerId==0){
                             GeneralHelper.showMsg("Black Wins!!",mContext);
                             break;
                         }
-                            GeneralHelper.checkWinner(mActivePointers,mContext);
+                        if(pointerId%2==0){
+                            GeneralHelper.showMsg("Black Wins!!",mContext);
+                        }
+                        else {
+                            GeneralHelper.showMsg("White Wins!!",mContext);
+                        }
                         break;
                     case MotionEvent.ACTION_CANCEL:
                         break;
@@ -122,7 +121,7 @@ public class TileAdapter extends RecyclerView.Adapter<TileAdapter.MyViewHolder> 
             }
             return;
         }
-        int num = GeneralHelper.randIntUnique(1, 20);
+        int num = GeneralHelper.randIntUnique(1, 15);
 
         if (num != -1 ) {
             tileModel = tileModelList.get(num);

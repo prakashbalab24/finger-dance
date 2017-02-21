@@ -28,34 +28,22 @@ public class GeneralHelper {
 
     public static int randIntUnique(int min, int max) {
         Random rand = new Random();
-        if (a.size()>=20){
+        if (a.size() >= 20) {
             return -1;
         }
         int randomNum = rand.nextInt((max - min) + 1) + min;
-        if(!a.contains(randomNum)){
+        if (!a.contains(randomNum)) {
             a.add(randomNum);
             return randomNum;
         }
-        return randIntUnique(min,max);
+        return randIntUnique(min, max);
 
     }
 
-    public static void showMsg(String msg, Context mContext){
-        Toast.makeText(mContext,msg,Toast.LENGTH_SHORT).show();
+    public static void showMsg(String msg, Context mContext) {
+        Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
     }
 
-    public static void checkWinner(List allPointers, Context mContext) {
-        for (int i = 1; i <= allPointers.size(); i++) {
-            if (!allPointers.contains(i)) {
-                if (i % 2 == 0) {
-                    GeneralHelper.showMsg("White Wins!", mContext);
-                } else {
-                    GeneralHelper.showMsg("Black Wins!", mContext);
-                }
-                break;
-            }
-        }
-    }
 
     public static void showDialog(String msg,Context context){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
