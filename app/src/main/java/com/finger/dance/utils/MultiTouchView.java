@@ -17,6 +17,7 @@ import android.view.View;
 import com.finger.dance.R;
 
 public class MultiTouchView extends View {
+    public static int totalPointers=0;
 
     private static final int SIZE =20;
 
@@ -24,6 +25,11 @@ public class MultiTouchView extends View {
     private Paint mPaint;
 
     private Paint textPaint;
+
+    public int getTotalPointers(){
+        return totalPointers;
+
+    }
 
 
     public MultiTouchView(Context context, AttributeSet attrs) {
@@ -44,28 +50,21 @@ public class MultiTouchView extends View {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
 
-        // get pointer index from the event object
         int pointerIndex = event.getActionIndex();
-
-        // get pointer ID
         int pointerId = event.getPointerId(pointerIndex);
-
-        // get masked (not specific to a pointer) action
         int maskedAction = event.getActionMasked();
 
         switch (maskedAction) {
 
             case MotionEvent.ACTION_DOWN:
             case MotionEvent.ACTION_POINTER_DOWN: {
-                // We have a new pointer. Lets add it to the list of pointers
-
                 PointF f = new PointF();
                 f.x = event.getX(pointerIndex);
                 f.y = event.getY(pointerIndex);
                 mActivePointers.put(pointerId, f);
                 break;
             }
-            case MotionEvent.ACTION_MOVE: { // a pointer was moved
+            case MotionEvent.ACTION_MOVE: {
                 for (int size = event.getPointerCount(), i = 0; i < size; i++) {
                     PointF point = mActivePointers.get(event.getPointerId(i));
                     if (point != null) {

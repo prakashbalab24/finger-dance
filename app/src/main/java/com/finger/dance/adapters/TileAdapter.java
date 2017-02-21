@@ -1,31 +1,23 @@
 package com.finger.dance.adapters;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Handler;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.util.SparseArray;
-import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
-
-
 import com.finger.dance.R;
 import com.finger.dance.helper.GeneralHelper;
 import com.finger.dance.models.TileModel;
-
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /**
- * Created by prakash-bala on 30/1/17.
+ * Created by prakash-bala on 21/2/17.
  */
 
 public class TileAdapter extends RecyclerView.Adapter<TileAdapter.MyViewHolder> {
@@ -36,7 +28,6 @@ public class TileAdapter extends RecyclerView.Adapter<TileAdapter.MyViewHolder> 
     private static int firstChange = -1;
     private static int playerColor;
     private List mActivePointers = new ArrayList();
-    private List clonePointers ;
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -92,28 +83,24 @@ public class TileAdapter extends RecyclerView.Adapter<TileAdapter.MyViewHolder> 
 
                 // get pointer ID
                 int pointerId = event.getPointerId(pointerIndex);
-                Log.i("pointid",pointerId+"");
                 switch(event.getAction() & MotionEvent.ACTION_MASK)
                 {
                     case MotionEvent.ACTION_DOWN:
-                        Log.i("actionbutton", "added:"+pointerId);
                         mActivePointers.add(pointerId);
                         ColorDrawable cd = (ColorDrawable) holder.tileView.getBackground();
                         int colorCode = cd.getColor();
                         changeColor(colorCode);
                        return true;
                     case MotionEvent.ACTION_UP:
-                        Log.i("actionbutton", "removed:"+pointerId);
-                        mActivePointers.remove(pointerId);
-                        if(!mActivePointers.contains(0)) {
-                            Toast.makeText(mContext,"Black Wins",Toast.LENGTH_LONG).show();
-                            Log.i("playerWinn","Firstplayer out");
+                        Log.i("poiterindex",pointerId+"");
+                        if (mActivePointers.size()<=pointerId) {
+                            mActivePointers.remove(pointerId);
+                        }
+                        if(pointerId==0) {
+                            GeneralHelper.showMsg("Black Wins!!",mContext);
                             break;
                         }
-                        else {
-                            checkWinner(mActivePointers);
-                        }
-                        Log.i("actionbutton","Up");
+                            GeneralHelper.checkWinner(mActivePointers,mContext);
                         break;
                     case MotionEvent.ACTION_CANCEL:
                         break;
@@ -124,39 +111,18 @@ public class TileAdapter extends RecyclerView.Adapter<TileAdapter.MyViewHolder> 
         });
     }
 
-    public  void checkWinner (List allPointers){
-       for (int i=1;i<=allPointers.size();i++){
-           if(!allPointers.contains(i)){
-               if(i%2==0){
-                   Toast.makeText(mContext,"Black Wins",Toast.LENGTH_LONG).show();
-                   Log.i("playerWinn","first player out");
-               }
-               else {
-                   Toast.makeText(mContext,"White Wins",Toast.LENGTH_LONG).show();
-                   Log.i("playerWinn","second player out");
-               }
-               break;
-           }
-       }
-
-
-    }
-
     public void changeColor(int tileColor){
 
         if(tileColor != playerColor){
-            Log.i("failedcolor","failed");
             if(playerColor==mContext.getResources().getColor(R.color.black)){
-                Toast.makeText(mContext,"White Wins",Toast.LENGTH_LONG).show();
+                GeneralHelper.showMsg("White Wins!",mContext);
             }
             else {
-                Toast.makeText(mContext,"Black Wins",Toast.LENGTH_LONG).show();
+                GeneralHelper.showMsg("Black Wins!",mContext);
             }
             return;
         }
         int num = GeneralHelper.randIntUnique(1, 20);
-
-        Log.i("uniquenum",num+"");
 
         if (num != -1 ) {
             tileModel = tileModelList.get(num);
