@@ -41,10 +41,10 @@ public class MultiTouchView extends View {
         mActivePointers = new SparseArray<>();
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         // set painter color to a color you like
-        mPaint.setColor(Color.BLUE);
+        mPaint.setColor(Color.WHITE);
         mPaint.setStyle(Paint.Style.FILL_AND_STROKE);
         textPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        textPaint.setTextSize(20);
+        textPaint.setTextSize(50);
     }
 
     @Override
@@ -97,7 +97,10 @@ public class MultiTouchView extends View {
                 mPaint.setColor(getResources().getColor(R.color.colorAccent));
             canvas.drawCircle(point.x, point.y, SIZE, mPaint);
         }
-        canvas.drawText("Total pointers: " + mActivePointers.size(), 10, 40 , textPaint);
+        canvas.drawText("Total pointers detected: " + mActivePointers.size(), 10, 40 , textPaint);
+        if(totalPointers<=mActivePointers.size()){
+            totalPointers = mActivePointers.size();
+        }
     }
 
 }

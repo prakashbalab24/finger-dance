@@ -1,12 +1,15 @@
 package com.finger.dance.activities;
 
 import android.app.FragmentTransaction;
+import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.finger.dance.R;
 import com.finger.dance.fragments.PlayGroundFragment;
+import com.finger.dance.utils.AppConstants;
+import com.finger.dance.utils.GeneralUtils;
 
 public class PlayGround extends AppCompatActivity {
 
@@ -14,10 +17,17 @@ public class PlayGround extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_ground);
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("FingerDance", 0);
+        int totalPointers = pref.getInt(AppConstants.KEY,0);
+        if(totalPointers<=2){
+            GeneralUtils.showDialog("Device Not Supported","Oops! Yous device don't support Multi Pointers.",this);
+        }
+        GeneralUtils.showMsg(totalPointers+"",this);
+
         PlayGroundFragment playGroundFragment =
                 (PlayGroundFragment) getSupportFragmentManager().findFragmentById(R.id.frgmentPlacer);
         if (playGroundFragment == null) {
-            playGroundFragment = PlayGroundFragment.newInstance(2);
+            playGroundFragment = PlayGroundFragment.newInstance(totalPointers);
             getSupportFragmentManager()
                     .beginTransaction()
                     .add(R.id.frgmentPlacer, playGroundFragment)

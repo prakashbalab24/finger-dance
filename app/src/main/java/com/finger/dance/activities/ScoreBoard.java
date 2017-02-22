@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.finger.dance.R;
+import com.finger.dance.SplashScreen;
 
 public class ScoreBoard extends AppCompatActivity {
     private Button playAgain;
@@ -28,7 +29,7 @@ public class ScoreBoard extends AppCompatActivity {
         playAgain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent1 = new Intent(ScoreBoard.this,PlayGround.class);
+                Intent intent1 = new Intent(ScoreBoard.this,SplashScreen.class);
                 startActivity(intent1);
                 finish();
             }

@@ -38,13 +38,13 @@ public class GeneralUtils {
     }
 
     public static void showMsg(String msg, Context mContext) {
-//        Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
+        Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
     }
 
 
-    public static void showDialog(String msg,Context context){
+    public static void showDialog(String title,String msg,Context context){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle("Total Pointers");
+        builder.setTitle(title);
         builder.setMessage(msg);
 
         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
