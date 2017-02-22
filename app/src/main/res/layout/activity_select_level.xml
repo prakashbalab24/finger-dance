@@ -15,6 +15,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="72dp"
         android:textSize="24sp"
+        android:textAllCaps="true"
         android:textColor="@color/black"
         android:id="@+id/textView6" />
     <LinearLayout
