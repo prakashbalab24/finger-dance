@@ -91,7 +91,12 @@ public class TileAdapter extends RecyclerView.Adapter<TileAdapter.MyViewHolder> 
                     case MotionEvent.ACTION_DOWN:
                         ColorDrawable cd = (ColorDrawable) holder.tileView.getBackground();
                         int colorCode = cd.getColor();
-                        changeColor(colorCode);
+                        if(checkMaxPointReached(pointerId)){
+                            startIntent("Match Draw");
+                        }
+                        else {
+                            changeColor(colorCode);
+                        }
                        return true;
                     case MotionEvent.ACTION_UP:
                         if (pointerId==0){
@@ -115,6 +120,14 @@ public class TileAdapter extends RecyclerView.Adapter<TileAdapter.MyViewHolder> 
                 return false;
             }
         });
+    }
+
+    private boolean checkMaxPointReached(int pointerId){
+        int value = GeneralUtils.getValueSharePref(mContext);
+        if (pointerId==(value-1)) {
+            return true;
+        }
+        return false;
     }
 
     private void changeColor(int tileColor){

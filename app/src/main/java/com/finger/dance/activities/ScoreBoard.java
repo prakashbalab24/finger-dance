@@ -23,7 +23,7 @@ public class ScoreBoard extends AppCompatActivity {
         Intent intent = getIntent();
         String winnerString = intent.getStringExtra("winner");
         if(winnerString!=null){
-            winner.setText(winnerString+" "+"Wins !!!");
+            winner.setText("Winner: "+winnerString);
         }
 
         playAgain.setOnClickListener(new View.OnClickListener() {

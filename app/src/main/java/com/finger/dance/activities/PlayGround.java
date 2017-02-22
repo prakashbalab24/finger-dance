@@ -1,5 +1,6 @@
 package com.finger.dance.activities;
 
+import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
@@ -17,10 +18,9 @@ public class PlayGround extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_ground);
-        SharedPreferences pref = getApplicationContext().getSharedPreferences("FingerDance", 0);
-        int totalPointers = pref.getInt(AppConstants.KEY,0);
+        int totalPointers = GeneralUtils.getValueSharePref(this);
         if(totalPointers<=2){
-            GeneralUtils.showDialog("Device Not Supported","Oops! Yous device don't support Multi Pointers.",this);
+            GeneralUtils.showDialog("Device Not Supported","Oops! Yous device don't support Multi Pointers.",this,true);
         }
         GeneralUtils.showMsg(totalPointers+"",this);
 

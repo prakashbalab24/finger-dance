@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         Button storeButton = (Button) findViewById(R.id.buttonstore);
 
         GeneralUtils.showDialog("Pointer Calibration","This is one time process! Keep all Your fingers on the screen to " +
-                "calibrate.",this);
+                "calibrate.",this,false);
 
         storeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,14 +29,15 @@ public class MainActivity extends AppCompatActivity {
                 MultiTouchView customView = (MultiTouchView) findViewById(R.id.multitouchview);
                 int totalPointers = customView.getTotalPointers();
                 Log.i("totalpointers",totalPointers+"");
+
+
                 if(totalPointers==0) {
-                    GeneralUtils.showDialog("Try again","Please try to keep maximum fingers on the blue screen.",MainActivity.this);
+                    /**Assuming user not yet touched screen and directly clicking save button **/
+                    GeneralUtils.showDialog("Try again","Please try to keep maximum fingers on the blue screen.",MainActivity.this,false);
                 }
                 else {
-                    SharedPreferences pref = getApplicationContext().getSharedPreferences("FingerDance", 0);
-                    SharedPreferences.Editor editor = pref.edit();
-                    editor.putInt(AppConstants.KEY, totalPointers);
-                    editor.commit();
+                    /**User calibrated pointers**/
+                    GeneralUtils.setValueSharePref(MainActivity.this,totalPointers);
                     Intent intent = new Intent(MainActivity.this, PlayGround.class);
                     startActivity(intent);
                     finish();
