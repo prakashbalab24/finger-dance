@@ -9,4 +9,9 @@
     <string name="pleasewait">Please wait ...</string>
     <string name="blackwinner">Black Wins!!</string>
     <string name="whitewinner">White wins!!!</string>
+    <string name="wrong_des">Oops! Finger Moved or Wrongly touched</string>
+    <string name="easy">Easy</string>
+    <string name="medium">Medium</string>
+    <string name="hard">Hard</string>
+    <string name="selectlevel">Select Level</string>
 </resources>

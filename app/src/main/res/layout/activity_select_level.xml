@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_select_level"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bck"
+    tools:context="com.finger.dance.activities.SelectLevel">
+
+    <TextView
+        android:text="@string/selectlevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linearLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="72dp"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:id="@+id/textView6" />
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:gravity="center">
+        <Button
+            android:background="@color/color8"
+            android:text="@string/easy"
+            android:layout_margin="@dimen/butmargin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:id="@+id/easy" />
+
+        <Button
+            android:background="@color/color9"
+            android:text="@string/medium"
+            android:layout_margin="@dimen/butmargin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/button"
+            android:id="@+id/medium" />
+
+        <Button
+            android:background="@color/color7"
+            android:text="@string/hard"
+            android:layout_margin="@dimen/butmargin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/hard" />
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

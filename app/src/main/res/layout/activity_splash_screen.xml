@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color8"
-    tools:context="com.finger.dance.SplashScreen">
+    tools:context="com.finger.dance.activities.SplashScreen">
 
     <TextView
         android:text="@string/app_name"

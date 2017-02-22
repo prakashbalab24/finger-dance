@@ -6,9 +6,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
-import android.widget.Toast;
 
-import com.finger.dance.MainActivity;
+import com.finger.dance.activities.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;

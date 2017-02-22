@@ -41,4 +41,14 @@
             android:id="@+id/calibrateBut"
             android:padding="12dp"/>
     </LinearLayout>
+
+    <TextView
+        android:text="@string/wrong_des"
+        android:textSize="16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/winnerTv"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="121dp"
+        android:id="@+id/textView5" />
 </RelativeLayout>

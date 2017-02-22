@@ -1,4 +1,4 @@
-package com.finger.dance;
+package com.finger.dance.activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -6,7 +6,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.finger.dance.activities.PlayGround;
+import com.finger.dance.R;
 import com.finger.dance.utils.AppConstants;
 
 public class SplashScreen extends AppCompatActivity {
@@ -30,7 +30,7 @@ public class SplashScreen extends AppCompatActivity {
 
                     }
                     else {
-                        Intent intent = new Intent(SplashScreen.this, PlayGround.class);
+                        Intent intent = new Intent(SplashScreen.this, SelectLevel.class);
                         startActivity(intent);
                         finish();
                     }
