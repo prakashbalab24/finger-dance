@@ -15,13 +15,13 @@ import com.finger.dance.R;
 import com.finger.dance.adapters.TileAdapter;
 import com.finger.dance.data.TileColorData;
 import com.finger.dance.models.TileModel;
+import com.finger.dance.utils.AppConstants;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class PlayGroundFragment extends Fragment {
-    private static final String LEVEL = "level";
     private int level;
     private RecyclerView recyclerView;
     private List<TileModel> tileList;
@@ -34,7 +34,7 @@ public class PlayGroundFragment extends Fragment {
     public static PlayGroundFragment newInstance(int level) {
         PlayGroundFragment fragment = new PlayGroundFragment();
         Bundle args = new Bundle();
-        args.putInt(LEVEL, level);
+        args.putInt(AppConstants.LEVEL, level);
         fragment.setArguments(args);
         return fragment;
     }
@@ -43,7 +43,7 @@ public class PlayGroundFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            level = getArguments().getInt(LEVEL);
+            level = getArguments().getInt(AppConstants.LEVEL);
         }
     }
 
@@ -55,13 +55,13 @@ public class PlayGroundFragment extends Fragment {
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
         tileList = new ArrayList<>();
 
-        tileAdapter = new TileAdapter(getContext(),tileList);
+        tileAdapter = new TileAdapter(getContext(),tileList,level);
 
-        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getContext(), 4);
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getContext(), level);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(tileAdapter);
-        new TileColorData(tileList,tileAdapter,getActivity());
+        new TileColorData(tileList,tileAdapter,getActivity(),level);
         return rootView;
     }
 

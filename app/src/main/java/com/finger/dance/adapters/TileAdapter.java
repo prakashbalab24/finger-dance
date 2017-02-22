@@ -11,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.finger.dance.R;
 import com.finger.dance.activities.ScoreBoard;
@@ -31,22 +33,24 @@ public class TileAdapter extends RecyclerView.Adapter<TileAdapter.MyViewHolder> 
     private int firstChange = -1;
     private static int playerColor;
     private int intentStarted = 0;
+    private int level;
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        public  TextView tileView;
+        public Button tileView;
         public MyViewHolder(View view) {
             super(view);
 
-            tileView = (TextView) view.findViewById(R.id.tileView);
+            tileView = (Button) view.findViewById(R.id.tileView);
         }
     }
 
 
-    public TileAdapter(Context mContext, List<TileModel> tileModelList) {
+    public TileAdapter(Context mContext, List<TileModel> tileModelList,int level) {
         this.mContext = mContext;
         this.tileModelList = tileModelList;
+        this.level = level;
         playerColor = mContext.getResources().getColor(R.color.black);
 
     }
@@ -63,7 +67,7 @@ public class TileAdapter extends RecyclerView.Adapter<TileAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         tileModel = tileModelList.get(position);
-        holder.tileView.setBackgroundColor(tileModel.getColor());
+        GeneralUtils.setCardDesign(level,holder,mContext);
         Handler handler = new Handler();
 
         if(firstChange == -1) {
@@ -73,9 +77,9 @@ public class TileAdapter extends RecyclerView.Adapter<TileAdapter.MyViewHolder> 
                     checkClickedTile(playerColor);
                 }
             };
-
             handler.post(r);
         }
+        holder.tileView.setBackgroundColor(tileModel.getColor());
 
         holder.tileView.setOnTouchListener(new View.OnTouchListener() {
 
@@ -98,6 +102,7 @@ public class TileAdapter extends RecyclerView.Adapter<TileAdapter.MyViewHolder> 
                             checkClickedTile(colorCode);
                         }
                        return true;
+                    case MotionEvent.ACTION_CANCEL:
                     case MotionEvent.ACTION_UP:
                         if (pointerId==0){
                             startIntent(mContext.getString(R.string.blackwinner));
@@ -110,11 +115,9 @@ public class TileAdapter extends RecyclerView.Adapter<TileAdapter.MyViewHolder> 
                             startIntent(mContext.getString(R.string.whitewinner));
                         }
                         break;
-                    case MotionEvent.ACTION_CANCEL:
-                        break;
                 }
 
-                return false;
+                return true;
             }
         });
     }
@@ -131,6 +134,7 @@ public class TileAdapter extends RecyclerView.Adapter<TileAdapter.MyViewHolder> 
 
     /**method for checking tile click **/
     private void checkClickedTile(int tileColor){
+        Log.i("playercolor",tileColor+"");
 
         if(tileColor != playerColor){
             if(playerColor==mContext.getResources().getColor(R.color.black)){
@@ -150,7 +154,8 @@ public class TileAdapter extends RecyclerView.Adapter<TileAdapter.MyViewHolder> 
 
     /** method for changing player turn **/
     private void togglePlayer(){
-        int num = GeneralUtils.randIntUnique(1, 15);
+        int num = GeneralUtils.randIntUnique(0, (level*3)-1);
+        Log.i("randomnum",num+"");
 
         if (num != -1 ) {
             tileModel = tileModelList.get(num);
@@ -163,7 +168,7 @@ public class TileAdapter extends RecyclerView.Adapter<TileAdapter.MyViewHolder> 
             tileModel.setColor(playerColor);
             notifyItemChanged(num);
         } else {
-            Log.i("numberprint", "Out of bound");
+            Log.i("numberprint", "Exception: All tiles finished");
         }
     }
 

@@ -15,6 +15,7 @@ import java.util.List;
  */
 
 public class TileColorData {
+    int firstRun = -1;
     int color[] = {R.color.colorAccent,
             R.color.color1,
             R.color.color2,
@@ -27,14 +28,14 @@ public class TileColorData {
             R.color.color9,
             R.color.color10,};
     int randomColor;
-    public TileColorData(List<TileModel> tileModelList, TileAdapter adapter, Context context) {
+    public TileColorData(List<TileModel> tileModelList, TileAdapter adapter, Context context,int level) {
 
-        Log.i("colorgenerated",randomColor+"");
+        Log.i("leveldata",level+"");
 
         TileModel offerModel;
 
-        for (int i =1;i<=16;i++){
-            randomColor = GeneralUtils.randInt(0,9);
+        for (int i =1;i<=(level*level);i++){
+            randomColor = GeneralUtils.randInt(0,10);
             offerModel = new TileModel(context.getResources().getColor(color[randomColor]));
             tileModelList.add(offerModel);
 

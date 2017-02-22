@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 
 import com.finger.dance.R;
+import com.finger.dance.utils.AppConstants;
+import com.finger.dance.utils.GeneralUtils;
 
 public class SelectLevel extends AppCompatActivity {
     private Button easy,medium,hard;
@@ -21,27 +23,29 @@ public class SelectLevel extends AppCompatActivity {
         easy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startGame(1);
+                GeneralUtils.a.clear();
+                startGame(3);
             }
         });
 
         medium.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startGame(2);
+                startGame(4);
             }
         });
 
         hard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startGame(3);
+                startGame(5);
             }
         });
     }
     private void startGame(int level){
         Intent intent = new Intent(SelectLevel.this,PlayGround.class);
-        intent.putExtra("level",level);
+        intent.putExtra(AppConstants.LEVEL,level);
         startActivity(intent);
+        finish();
     }
 }

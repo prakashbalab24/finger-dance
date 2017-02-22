@@ -29,7 +29,7 @@ public class ScoreBoard extends AppCompatActivity {
         playAgain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent1 = new Intent(ScoreBoard.this,SplashScreen.class);
+                Intent intent1 = new Intent(ScoreBoard.this,SelectLevel.class);
                 startActivity(intent1);
                 finish();
             }

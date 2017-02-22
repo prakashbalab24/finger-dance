@@ -3,4 +3,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="butmargin">12dp</dimen>
+    <dimen name="cardsizebig">80dp</dimen>
+    <dimen name="cardsizemedium">60dp</dimen>
+    <dimen name="cardsizesmall">40dp</dimen>
 </resources>

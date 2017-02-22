@@ -14,4 +14,5 @@
     <string name="medium">Medium</string>
     <string name="hard">Hard</string>
     <string name="selectlevel">Select Level</string>
+    <string name="instruction">Dont move or take your fingers.</string>
 </resources>

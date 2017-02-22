@@ -6,4 +6,6 @@ package com.finger.dance.utils;
 
 public class AppConstants {
     public static final String KEY = "keypointers";
+    public static final String LEVEL = "level";
+    public static final String SP_NAME = "FingerDancer";
 }

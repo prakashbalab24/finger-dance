@@ -36,10 +36,10 @@ public class MainActivity extends AppCompatActivity {
                 else {
                     /**User calibrated pointers**/
                     GeneralUtils.setValueSharePref(MainActivity.this,totalPointers);
-                    Intent intent = new Intent(MainActivity.this, PlayGround.class);
+                    Intent intent = new Intent(MainActivity.this, SelectLevel.class);
                     startActivity(intent);
                     finish();
-                     }
+                }
 
             }
         });

@@ -6,8 +6,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
+import android.widget.LinearLayout;
 
+import com.finger.dance.R;
 import com.finger.dance.activities.MainActivity;
+import com.finger.dance.adapters.TileAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +21,7 @@ import java.util.Random;
  */
 
 public class GeneralUtils {
-    private static List<Integer> a = new ArrayList<Integer>();
+    public static List<Integer> a = new ArrayList<Integer>();
 
     /**Method for generating random integer**/
     public static int randInt(int min, int max) {
@@ -30,10 +33,10 @@ public class GeneralUtils {
     /**Method for generating random UNIQUE integer**/
     public static int randIntUnique(int min, int max) {
         Random rand = new Random();
-        if (a.size() >= 20) {
+        int randomNum = rand.nextInt((max - min) + 1) + min;
+        if (a.size() > max) {
             return -1;
         }
-        int randomNum = rand.nextInt((max - min) + 1) + min;
         if (!a.contains(randomNum)) {
             a.add(randomNum);
             return randomNum;
@@ -75,17 +78,55 @@ public class GeneralUtils {
 
     /**Method for Getting Shared pref **/
     public static int getValueSharePref(Context context){
-        SharedPreferences pref = context.getSharedPreferences("FingerDance", 0);
+        SharedPreferences pref = context.getSharedPreferences(AppConstants.SP_NAME, 0);
         int totalPointers = pref.getInt(AppConstants.KEY,0);
         return totalPointers;
     }
 
     /**Method for Setting Shared pref **/
     public static void setValueSharePref(Context context,int totalPointers){
-        SharedPreferences pref = context.getSharedPreferences("FingerDance", 0);
-        SharedPreferences.Editor editor = pref.edit();
+        SharedPreferences pref = context.getSharedPreferences(AppConstants.SP_NAME, 0);
+        SharedPreferences.Editor editor= pref.edit();;
+        if(pref.contains(AppConstants.KEY)) {
+            editor.clear();
+        }
         editor.putInt(AppConstants.KEY, totalPointers);
         editor.commit();
+    }
+
+    public static void setCardDesign (int level, TileAdapter.MyViewHolder holder,Context mContext) {
+        switch (level){
+            case 3:{
+                LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) holder.tileView.getLayoutParams();
+                params.height = mContext.getResources().getDimensionPixelSize(R.dimen.cardsizebig);
+                params.width = mContext.getResources().getDimensionPixelSize(R.dimen.cardsizebig);
+                holder.tileView.setLayoutParams(params);
+                break;
+            }
+
+            case 4:{
+                LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) holder.tileView.getLayoutParams();
+                params.height = mContext.getResources().getDimensionPixelSize(R.dimen.cardsizemedium);
+                params.width = mContext.getResources().getDimensionPixelSize(R.dimen.cardsizemedium);
+                holder.tileView.setLayoutParams(params);
+                break;
+            }
+            case 5:{
+                LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) holder.tileView.getLayoutParams();
+                params.height = mContext.getResources().getDimensionPixelSize(R.dimen.cardsizesmall);
+                params.width = mContext.getResources().getDimensionPixelSize(R.dimen.cardsizesmall);
+                holder.tileView.setLayoutParams(params);
+                break;
+            }
+            default:{
+                LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) holder.tileView.getLayoutParams();
+                params.height = mContext.getResources().getDimensionPixelSize(R.dimen.cardsizesmall);
+                params.width = mContext.getResources().getDimensionPixelSize(R.dimen.cardsizesmall);
+                holder.tileView.setLayoutParams(params);
+                break;
+
+            }
+        }
     }
 
 
