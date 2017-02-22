@@ -70,7 +70,7 @@ public class TileAdapter extends RecyclerView.Adapter<TileAdapter.MyViewHolder> 
             firstChange = 0;
             final Runnable r = new Runnable() {
                 public void run() {
-                    changeColor(playerColor);
+                    checkClickedTile(playerColor);
                 }
             };
 
@@ -95,22 +95,19 @@ public class TileAdapter extends RecyclerView.Adapter<TileAdapter.MyViewHolder> 
                             startIntent("Match Draw");
                         }
                         else {
-                            changeColor(colorCode);
+                            checkClickedTile(colorCode);
                         }
                        return true;
                     case MotionEvent.ACTION_UP:
                         if (pointerId==0){
-                            GeneralUtils.showMsg("Black Wins!!",mContext);
-                            startIntent("Black");
+                            startIntent(mContext.getString(R.string.blackwinner));
                             break;
                         }
                         if(pointerId%2==0){
-                            GeneralUtils.showMsg("Black Wins!!",mContext);
-                            startIntent("Black");
+                            startIntent(mContext.getString(R.string.blackwinner));
                         }
                         else {
-                            GeneralUtils.showMsg("White Wins!!",mContext);
-                            startIntent("White");
+                            startIntent(mContext.getString(R.string.whitewinner));
                         }
                         break;
                     case MotionEvent.ACTION_CANCEL:
@@ -122,6 +119,7 @@ public class TileAdapter extends RecyclerView.Adapter<TileAdapter.MyViewHolder> 
         });
     }
 
+    /**method for maximum device pointer checking **/
     private boolean checkMaxPointReached(int pointerId){
         int value = GeneralUtils.getValueSharePref(mContext);
         if (pointerId==(value-1)) {
@@ -130,19 +128,28 @@ public class TileAdapter extends RecyclerView.Adapter<TileAdapter.MyViewHolder> 
         return false;
     }
 
-    private void changeColor(int tileColor){
+
+    /**method for checking tile click **/
+    private void checkClickedTile(int tileColor){
 
         if(tileColor != playerColor){
             if(playerColor==mContext.getResources().getColor(R.color.black)){
-                startIntent("White");
-                GeneralUtils.showMsg("White Wins!",mContext);
+                startIntent(mContext.getString(R.string.whitewinner));
             }
             else {
-                startIntent("Black");
-                GeneralUtils.showMsg("Black Wins!",mContext);
+                startIntent(mContext.getString(R.string.blackwinner));
             }
             return;
         }
+        else {
+            togglePlayer();
+        }
+
+
+    }
+
+    /** method for changing player turn **/
+    private void togglePlayer(){
         int num = GeneralUtils.randIntUnique(1, 15);
 
         if (num != -1 ) {
@@ -158,10 +165,10 @@ public class TileAdapter extends RecyclerView.Adapter<TileAdapter.MyViewHolder> 
         } else {
             Log.i("numberprint", "Out of bound");
         }
-
-
     }
 
+
+    /** Genral method for intent **/
     private void startIntent(String winner){
         if(intentStarted!=-1) {
             intentStarted = -1;

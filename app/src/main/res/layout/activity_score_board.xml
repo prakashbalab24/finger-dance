@@ -16,13 +16,29 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:id="@+id/winnerTv" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+       android:layout_centerInParent="true"
+        android:layout_below="@+id/winnerTv"
+        android:layout_centerHorizontal="true">
 
     <Button
         android:text="Play Again"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/winnerTv"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="94dp"
-        android:id="@+id/playagainBut" />
+        android:id="@+id/playagainBut"
+        android:padding="12dp"/>
+
+        <Button
+            android:text="Calibrate Pointers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="94dp"
+            android:id="@+id/calibrateBut"
+            android:padding="12dp"/>
+    </LinearLayout>
 </RelativeLayout>

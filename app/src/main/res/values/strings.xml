@@ -7,4 +7,6 @@
     <string name="player2">Player 2</string>
     <string name="multiplayer">Dare to poke tiles?</string>
     <string name="pleasewait">Please wait ...</string>
+    <string name="blackwinner">Black Wins!!</string>
+    <string name="whitewinner">White wins!!!</string>
 </resources>
