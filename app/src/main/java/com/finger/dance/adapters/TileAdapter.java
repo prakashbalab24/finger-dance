@@ -1,6 +1,8 @@
 package com.finger.dance.adapters;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Handler;
 import android.support.v7.widget.RecyclerView;
@@ -11,9 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.finger.dance.R;
-import com.finger.dance.helper.GeneralHelper;
+import com.finger.dance.activities.ScoreBoard;
+import com.finger.dance.utils.GeneralUtils;
 import com.finger.dance.models.TileModel;
-import java.util.ArrayList;
+
 import java.util.List;
 
 /**
@@ -27,6 +30,7 @@ public class TileAdapter extends RecyclerView.Adapter<TileAdapter.MyViewHolder> 
     private TileModel tileModel;
     private int firstChange = -1;
     private static int playerColor;
+    private int intentStarted = 0;
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -91,14 +95,17 @@ public class TileAdapter extends RecyclerView.Adapter<TileAdapter.MyViewHolder> 
                        return true;
                     case MotionEvent.ACTION_UP:
                         if (pointerId==0){
-                            GeneralHelper.showMsg("Black Wins!!",mContext);
+                            GeneralUtils.showMsg("Black Wins!!",mContext);
+                            startIntent("Black");
                             break;
                         }
                         if(pointerId%2==0){
-                            GeneralHelper.showMsg("Black Wins!!",mContext);
+                            GeneralUtils.showMsg("Black Wins!!",mContext);
+                            startIntent("Black");
                         }
                         else {
-                            GeneralHelper.showMsg("White Wins!!",mContext);
+                            GeneralUtils.showMsg("White Wins!!",mContext);
+                            startIntent("White");
                         }
                         break;
                     case MotionEvent.ACTION_CANCEL:
@@ -110,18 +117,20 @@ public class TileAdapter extends RecyclerView.Adapter<TileAdapter.MyViewHolder> 
         });
     }
 
-    public void changeColor(int tileColor){
+    private void changeColor(int tileColor){
 
         if(tileColor != playerColor){
             if(playerColor==mContext.getResources().getColor(R.color.black)){
-                GeneralHelper.showMsg("White Wins!",mContext);
+                startIntent("White");
+                GeneralUtils.showMsg("White Wins!",mContext);
             }
             else {
-                GeneralHelper.showMsg("Black Wins!",mContext);
+                startIntent("Black");
+                GeneralUtils.showMsg("Black Wins!",mContext);
             }
             return;
         }
-        int num = GeneralHelper.randIntUnique(1, 15);
+        int num = GeneralUtils.randIntUnique(1, 15);
 
         if (num != -1 ) {
             tileModel = tileModelList.get(num);
@@ -137,7 +146,20 @@ public class TileAdapter extends RecyclerView.Adapter<TileAdapter.MyViewHolder> 
             Log.i("numberprint", "Out of bound");
         }
 
+
     }
+
+    private void startIntent(String winner){
+        if(intentStarted!=-1) {
+            intentStarted = -1;
+            Intent intent = new Intent((Activity) mContext, ScoreBoard.class);
+            intent.putExtra("winner", winner);
+            mContext.startActivity(intent);
+            ((Activity) mContext).finish();
+        }
+    }
+
+
 
     @Override
     public int getItemCount() {

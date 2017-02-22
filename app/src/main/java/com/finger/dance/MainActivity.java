@@ -1,20 +1,15 @@
 package com.finger.dance;
 
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 import com.finger.dance.activities.PlayGround;
-import com.finger.dance.helper.GeneralHelper;
-import com.finger.dance.utils.MultiTouchView;
-
-import static android.R.attr.x;
+import com.finger.dance.utils.GeneralUtils;
+import com.finger.dance.component.ui.MultiTouchView;
 
 public class MainActivity extends AppCompatActivity {
     private static final String KEY = "keypointers";
@@ -25,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Button storeButton = (Button) findViewById(R.id.buttonstore);
 
-        GeneralHelper.showDialog("Please Help us to analyze your phone's maximum pointer. Keep all Your fingers to" +
+        GeneralUtils.showDialog("Please Help us to analyze your phone's maximum pointer. Keep all Your fingers to" +
                 "calibrate.",this);
 
         storeButton.setOnClickListener(new View.OnClickListener() {

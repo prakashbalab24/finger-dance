@@ -1,12 +1,9 @@
-package com.finger.dance.helper;
+package com.finger.dance.utils;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.widget.Toast;
-
-import com.finger.dance.utils.MultiTouchView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +13,7 @@ import java.util.Random;
  * Created by prakash-bala on 21/2/17.
  */
 
-public class GeneralHelper {
+public class GeneralUtils {
     private static List<Integer> a = new ArrayList<Integer>();
 
     public static int randInt(int min, int max) {
@@ -41,7 +38,7 @@ public class GeneralHelper {
     }
 
     public static void showMsg(String msg, Context mContext) {
-        Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
     }
 
 

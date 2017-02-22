@@ -1,4 +1,4 @@
-package com.finger.dance.utils;
+package com.finger.dance.component.ui;
 
 /**
  * Created by prakash-bala on 20/2/17.

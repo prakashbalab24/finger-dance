@@ -5,11 +5,10 @@ import android.util.Log;
 
 import com.finger.dance.R;
 import com.finger.dance.adapters.TileAdapter;
-import com.finger.dance.helper.GeneralHelper;
+import com.finger.dance.utils.GeneralUtils;
 import com.finger.dance.models.TileModel;
 
 import java.util.List;
-import java.util.Random;
 
 /**
  * Created by prakash-bala on 21/2/17.
@@ -35,7 +34,7 @@ public class TileColorData {
         TileModel offerModel;
 
         for (int i =1;i<=16;i++){
-            randomColor = GeneralHelper.randInt(0,9);
+            randomColor = GeneralUtils.randInt(0,9);
             offerModel = new TileModel(context.getResources().getColor(color[randomColor]));
             tileModelList.add(offerModel);
 
