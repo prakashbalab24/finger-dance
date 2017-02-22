@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import com.finger.dance.R;
 import com.finger.dance.utils.AppConstants;
+import com.finger.dance.utils.GeneralUtils;
 
 public class SplashScreen extends AppCompatActivity {
     int totalPointers;
@@ -16,8 +17,7 @@ public class SplashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-        SharedPreferences pref = getApplicationContext().getSharedPreferences("FingerDance", 0);
-        totalPointers= pref.getInt(AppConstants.KEY,0);
+        totalPointers= GeneralUtils.getValueSharePref(this);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
