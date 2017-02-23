@@ -1,5 +1,5 @@
 ## Finger Dance - Android Game
-##Apk link: https://drive.google.com/open?id=0Bymlc-KOpbeJU0MzRlFodWRQZ1U
+##Apk link (updated 23.2.17): https://drive.google.com/open?id=0Bymlc-KOpbeJUTdDalp6RGpkd3c
 
 ###Steps:
 
@@ -54,3 +54,9 @@
 <img src="https://github.com/prakashbalab24/prakashbalab24.github.io/blob/master/screen4.jpeg" alt="alt text" width="300" height="480">
 ####Winner
 <img src="https://github.com/prakashbalab24/prakashbalab24.github.io/blob/master/screen5.jpeg" alt="alt text" width="300" height="480">
+
+- - - -
+
+###Refered links:
+
+Multi touch view: http://www.vogella.com/tutorials/AndroidTouch/article.html
