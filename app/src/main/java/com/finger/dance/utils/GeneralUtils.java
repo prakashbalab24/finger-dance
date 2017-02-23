@@ -21,7 +21,7 @@ import java.util.Random;
  */
 
 public class GeneralUtils {
-    public static List<Integer> a = new ArrayList<Integer>();
+    public static List<Integer> a ;
 
     /**Method for generating random integer**/
     public static int randInt(int min, int max) {

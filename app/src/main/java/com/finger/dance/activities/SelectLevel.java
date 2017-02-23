@@ -10,6 +10,9 @@ import com.finger.dance.R;
 import com.finger.dance.utils.AppConstants;
 import com.finger.dance.utils.GeneralUtils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SelectLevel extends AppCompatActivity {
     private Button easy,medium,hard;
 
@@ -23,7 +26,7 @@ public class SelectLevel extends AppCompatActivity {
         easy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                GeneralUtils.a.clear();
+                GeneralUtils.a = new ArrayList<Integer>();
                 startGame(3);
             }
         });
@@ -31,13 +34,16 @@ public class SelectLevel extends AppCompatActivity {
         medium.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                GeneralUtils.a = new ArrayList<Integer>();
                 startGame(4);
+
             }
         });
 
         hard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                GeneralUtils.a = new ArrayList<Integer>();
                 startGame(5);
             }
         });
