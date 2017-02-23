@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 
 import com.finger.dance.R;
 import com.finger.dance.activities.MainActivity;
+import com.finger.dance.activities.SplashScreen;
 import com.finger.dance.adapters.TileAdapter;
 
 import java.util.ArrayList;
@@ -41,7 +42,7 @@ public class GeneralUtils {
             a.add(randomNum);
             return randomNum;
         }
-        return randIntUnique(min, max);
+        return -1;
 
     }
     /**Method for Showing msg**/
@@ -124,7 +125,9 @@ public class GeneralUtils {
 
             }
         }
+
     }
+
 
 
 }

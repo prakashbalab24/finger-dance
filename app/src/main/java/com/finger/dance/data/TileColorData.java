@@ -15,7 +15,6 @@ import java.util.List;
  */
 
 public class TileColorData {
-    int firstRun = -1;
     int color[] = {R.color.colorAccent,
             R.color.color1,
             R.color.color2,
