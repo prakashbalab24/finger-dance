@@ -95,9 +95,9 @@ public class GeneralUtils {
     }
 
     public static void setCardDesign (int level, TileAdapter.MyViewHolder holder,Context mContext) {
+        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) holder.tileView.getLayoutParams();
         switch (level){
             case 3:{
-                LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) holder.tileView.getLayoutParams();
                 params.height = mContext.getResources().getDimensionPixelSize(R.dimen.cardsizebig);
                 params.width = mContext.getResources().getDimensionPixelSize(R.dimen.cardsizebig);
                 holder.tileView.setLayoutParams(params);
@@ -105,21 +105,18 @@ public class GeneralUtils {
             }
 
             case 4:{
-                LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) holder.tileView.getLayoutParams();
                 params.height = mContext.getResources().getDimensionPixelSize(R.dimen.cardsizemedium);
                 params.width = mContext.getResources().getDimensionPixelSize(R.dimen.cardsizemedium);
                 holder.tileView.setLayoutParams(params);
                 break;
             }
             case 5:{
-                LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) holder.tileView.getLayoutParams();
                 params.height = mContext.getResources().getDimensionPixelSize(R.dimen.cardsizesmall);
                 params.width = mContext.getResources().getDimensionPixelSize(R.dimen.cardsizesmall);
                 holder.tileView.setLayoutParams(params);
                 break;
             }
             default:{
-                LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) holder.tileView.getLayoutParams();
                 params.height = mContext.getResources().getDimensionPixelSize(R.dimen.cardsizesmall);
                 params.width = mContext.getResources().getDimensionPixelSize(R.dimen.cardsizesmall);
                 holder.tileView.setLayoutParams(params);
