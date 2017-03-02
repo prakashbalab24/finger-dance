@@ -13,9 +13,11 @@ import android.view.ViewGroup;
 
 import com.finger.dance.R;
 import com.finger.dance.adapters.TileAdapter;
+import com.finger.dance.component.ui.RadialGradientView;
 import com.finger.dance.data.TileColorData;
 import com.finger.dance.models.TileModel;
 import com.finger.dance.utils.AppConstants;
+import com.finger.dance.utils.ColorGradient;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +28,7 @@ public class PlayGroundFragment extends Fragment {
     private RecyclerView recyclerView;
     private List<TileModel> tileList;
     private TileAdapter tileAdapter;
+    private RadialGradientView gradientView;
 
     public PlayGroundFragment() {
         // Required empty public constructor
@@ -52,10 +55,12 @@ public class PlayGroundFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_play_ground, container, false);
+        gradientView = (RadialGradientView) rootView.findViewById(R.id.background);
+        ColorGradient.changeBackground(gradientView,getContext());
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
         tileList = new ArrayList<>();
 
-        tileAdapter = new TileAdapter(getContext(),tileList,level);
+        tileAdapter = new TileAdapter(getContext(),tileList,level,gradientView);
 
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getContext(), level);
         recyclerView.setLayoutManager(mLayoutManager);

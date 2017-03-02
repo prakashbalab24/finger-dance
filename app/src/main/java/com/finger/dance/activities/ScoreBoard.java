@@ -8,15 +8,20 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.finger.dance.R;
+import com.finger.dance.component.ui.RadialGradientView;
+import com.finger.dance.utils.ColorGradient;
 
 public class ScoreBoard extends AppCompatActivity {
     private Button playAgain,calibrate;
     private TextView winner;
+    private RadialGradientView gradientView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score_board);
+        gradientView = (RadialGradientView) findViewById(R.id.background);
+        ColorGradient.changeBackground(gradientView,this);
         playAgain = (Button) findViewById(R.id.playagainBut);
         calibrate = (Button) findViewById(R.id.calibrateBut);
         winner = (TextView) findViewById(R.id.winnerTv);

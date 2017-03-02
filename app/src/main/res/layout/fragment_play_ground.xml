@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/bck"
     xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.finger.dance.component.ui.RadialGradientView
+        android:id="@+id/background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:centerX=".5"
+        app:centerY=".5"
+        app:startColor="@color/background_pink_start"
+        app:endColor="@color/background_pink_end"
+        app:gradientRadiusWidthPercent="1"
+        />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

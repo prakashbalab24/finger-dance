@@ -7,7 +7,9 @@ import android.view.View;
 import android.widget.Button;
 
 import com.finger.dance.R;
+import com.finger.dance.component.ui.RadialGradientView;
 import com.finger.dance.utils.AppConstants;
+import com.finger.dance.utils.ColorGradient;
 import com.finger.dance.utils.GeneralUtils;
 
 import java.util.ArrayList;
@@ -15,11 +17,14 @@ import java.util.List;
 
 public class SelectLevel extends AppCompatActivity {
     private Button easy,medium,hard;
+    private RadialGradientView gradientView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_level);
+        gradientView = (RadialGradientView) findViewById(R.id.background);
+        ColorGradient.changeBackground(gradientView,this);
         easy = (Button) findViewById(R.id.easy);
         medium = (Button) findViewById(R.id.medium);
         hard = (Button) findViewById(R.id.hard);

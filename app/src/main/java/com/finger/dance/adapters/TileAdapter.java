@@ -16,6 +16,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.finger.dance.R;
 import com.finger.dance.activities.ScoreBoard;
+import com.finger.dance.component.ui.RadialGradientView;
+import com.finger.dance.utils.ColorGradient;
 import com.finger.dance.utils.GeneralUtils;
 import com.finger.dance.models.TileModel;
 
@@ -34,6 +36,7 @@ public class TileAdapter extends RecyclerView.Adapter<TileAdapter.MyViewHolder> 
     private static int playerColor;
     private int intentStarted = 0;
     private int level;
+    private RadialGradientView gradientView;
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -47,10 +50,11 @@ public class TileAdapter extends RecyclerView.Adapter<TileAdapter.MyViewHolder> 
     }
 
 
-    public TileAdapter(Context mContext, List<TileModel> tileModelList,int level) {
+    public TileAdapter(Context mContext, List<TileModel> tileModelList, int level, RadialGradientView gradientView) {
         this.mContext = mContext;
         this.tileModelList = tileModelList;
         this.level = level;
+        this.gradientView= gradientView;
         playerColor = mContext.getResources().getColor(R.color.black);
 
     }
@@ -93,6 +97,7 @@ public class TileAdapter extends RecyclerView.Adapter<TileAdapter.MyViewHolder> 
                 switch(event.getAction() & MotionEvent.ACTION_MASK)
                 {
                     case MotionEvent.ACTION_DOWN:
+                        ColorGradient.changeBackground(gradientView,mContext);
                         ColorDrawable cd = (ColorDrawable) holder.tileView.getBackground();
                         int colorCode = cd.getColor();
                         if(checkMaxPointReached(pointerId)){
