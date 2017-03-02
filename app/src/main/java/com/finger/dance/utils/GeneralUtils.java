@@ -42,7 +42,7 @@ public class GeneralUtils {
             a.add(randomNum);
             return randomNum;
         }
-        return -1;
+        return randIntUnique(min,max);
 
     }
     /**Method for Showing msg**/

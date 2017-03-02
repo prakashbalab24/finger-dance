@@ -154,7 +154,7 @@ public class TileAdapter extends RecyclerView.Adapter<TileAdapter.MyViewHolder> 
 
     /** method for changing player turn **/
     private void togglePlayer(){
-        int num = GeneralUtils.randIntUnique(0, (level*3)-1);
+        int num = GeneralUtils.randIntUnique(0, (level*level)-1);
         Log.i("randomnum",num+"");
 
         if (num != -1 ) {
