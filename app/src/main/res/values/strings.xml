@@ -1,11 +1,9 @@
 <resources>
-    <string name="app_name">Finger Dance</string>
+    <string name="app_name">Color Mine</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="player1">Player 1</string>
     <string name="player2">Player 2</string>
-    <string name="multiplayer">Dare to poke tiles?</string>
+    <string name="multiplayer">Dare to poke?</string>
     <string name="pleasewait">Please wait ...</string>
     <string name="blackwinner">Black Wins!!</string>
     <string name="whitewinner">White wins!!!</string>

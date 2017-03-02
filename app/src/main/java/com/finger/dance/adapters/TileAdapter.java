@@ -1,9 +1,11 @@
 package com.finger.dance.adapters;
 
 import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Handler;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -11,6 +13,8 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -29,6 +33,7 @@ import java.util.List;
 
 public class TileAdapter extends RecyclerView.Adapter<TileAdapter.MyViewHolder> {
 
+    private static final long FADE_DURATION = 1000;
     private Context mContext;
     private List<TileModel> tileModelList;
     private TileModel tileModel;
@@ -84,6 +89,7 @@ public class TileAdapter extends RecyclerView.Adapter<TileAdapter.MyViewHolder> 
             handler.post(r);
         }
         holder.tileView.setBackgroundColor(tileModel.getColor());
+        setFadeAnimation(holder.itemView);
 
         holder.tileView.setOnTouchListener(new View.OnTouchListener() {
 
@@ -127,6 +133,13 @@ public class TileAdapter extends RecyclerView.Adapter<TileAdapter.MyViewHolder> 
         });
     }
 
+
+
+    private void setFadeAnimation(View view) {
+        AlphaAnimation anim = new AlphaAnimation(0.0f, 1.0f);
+        anim.setDuration(FADE_DURATION);
+        view.startAnimation(anim);
+    }
     /**method for maximum device pointer checking **/
     private boolean checkMaxPointReached(int pointerId){
         int value = GeneralUtils.getValueSharePref(mContext);
@@ -184,8 +197,16 @@ public class TileAdapter extends RecyclerView.Adapter<TileAdapter.MyViewHolder> 
             intentStarted = -1;
             Intent intent = new Intent((Activity) mContext, ScoreBoard.class);
             intent.putExtra("winner", winner);
-            mContext.startActivity(intent);
-            ((Activity) mContext).finish();
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                mContext.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(((Activity) mContext)).toBundle());
+                ((Activity) mContext).finish();
+            }
+            else {
+                mContext.startActivity(intent);
+                ((Activity) mContext).finish();
+            }
+
         }
     }
 
