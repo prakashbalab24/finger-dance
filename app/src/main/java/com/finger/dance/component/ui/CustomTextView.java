@@ -22,7 +22,7 @@ public class CustomTextView extends TextView {
     }
 
     private void setCustomFont() {
-        Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), "font/Pacifico-Regular.ttf");
+        Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), "font/MontserratAlternates-Medium.ttf");
         setTypeface(typeface);
     }
 }

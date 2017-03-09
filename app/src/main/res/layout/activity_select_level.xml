@@ -19,7 +19,7 @@
 
     <Button
         android:layout_centerInParent="true"
-        android:background="@color/color8"
+        android:background="@color/color1"
         android:text="@string/easy"
         android:layout_margin="@dimen/butmargin"
         android:layout_width="100dp"

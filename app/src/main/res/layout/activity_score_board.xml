@@ -5,7 +5,7 @@
     android:id="@+id/activity_score_board"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color6"
+    android:background="@color/color1"
     tools:context="com.finger.dance.activities.ScoreBoard">
     <com.finger.dance.component.ui.RadialGradientView
         android:id="@+id/background"
@@ -30,27 +30,35 @@
         android:layout_centerHorizontal="true"
         android:id="@+id/winnerTv" />
     <LinearLayout
+        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:gravity="bottom|center"
        android:layout_centerInParent="true"
         android:layout_below="@+id/winnerTv"
         android:layout_centerHorizontal="true">
 
-    <Button
+    <com.finger.dance.component.ui.CustomTextView
         android:text="Play Again"
-        android:layout_width="wrap_content"
+        android:background="@drawable/cust_but"
+        android:layout_width="match_parent"
+        android:layout_margin="14dp"
+        android:gravity="center"
         android:layout_height="wrap_content"
-        android:layout_marginTop="94dp"
         android:id="@+id/playagainBut"
+        android:textSize="18sp"
+        android:textStyle="bold"
         android:padding="12dp"/>
 
-        <Button
+        <com.finger.dance.component.ui.CustomTextView
             android:text="Calibrate Pointers"
+            android:background="@drawable/cust_but"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="94dp"
+            android:layout_margin="10dp"
+            android:textStyle="bold"
+            android:textSize="12sp"
             android:id="@+id/calibrateBut"
             android:padding="12dp"/>
     </LinearLayout>

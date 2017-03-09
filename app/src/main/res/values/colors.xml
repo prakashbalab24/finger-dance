@@ -5,16 +5,32 @@
     <color name="colorAccent">#FF4081</color>
 
 
-    <color name="color1">#FF5722</color>
-    <color name="color2">#2196F3</color>
-    <color name="color3">#00897B</color>
-    <color name="color4">#9C27B0</color>
-    <color name="color5">#4CAF50</color>
-    <color name="color6">#FFEB3B</color>
-    <color name="color7">#f44336</color>
-    <color name="color8">#673AB7</color>
-    <color name="color9">#CDDC39</color>
-    <color name="color10">#607D8B</color>
+    <color name="color1">#ff1744</color>
+    <color name="color2">#F50057</color>
+    <color name="color3">#D500F9</color>
+    <color name="color4">#651FFF</color>
+    <color name="color5">#3D5AFE</color>
+    <color name="color6">#2979FF</color>
+    <color name="color7">#00B0FF</color>
+    <color name="color8">#00E5FF</color>
+    <color name="color9">#1DE9B6</color>
+    <color name="color10">#00E676</color>
+    <color name="color11">#76FF03</color>
+    <color name="color12">#C6FF00</color>
+    <color name="color13">#FFEA00</color>
+    <color name="color14">#FFC400</color>
+    <color name="color15">#FF9100</color>
+    <color name="color16">#FF3D00</color>
+    <color name="color17">#d50000</color>
+    <color name="color18">#C51162</color>
+    <color name="color19">#AA00FF</color>
+    <color name="color20">#6200EA</color>
+    <color name="color21">#304FFE</color>
+    <color name="color22">#00BFA5</color>
+    <color name="color23">#AEEA00</color>
+    <color name="color24">#FFAB00</color>
+    <color name="color25">#37474F</color>
+    <color name="color26">#FBC02D</color>
 
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>

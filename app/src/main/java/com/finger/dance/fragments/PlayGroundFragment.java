@@ -1,6 +1,7 @@
 package com.finger.dance.fragments;
 
 import android.content.Context;
+import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -9,7 +10,10 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.transition.Explode;
+import android.transition.Transition;
+import android.transition.TransitionManager;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -67,6 +71,34 @@ public class PlayGroundFragment extends Fragment {
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(tileAdapter);
+//
+//        recyclerView.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                // save rect of view in screen coordinates
+//                final Rect viewRect = new Rect();
+//                v.getGlobalVisibleRect(viewRect);
+//
+//                // create Explode transition with epicenter
+//
+//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//                    Transition explode = new Explode();
+//                    explode.setEpicenterCallback(new Transition.EpicenterCallback() {
+//                        @Override
+//                        public Rect onGetEpicenter(Transition transition) {
+//                            return viewRect;
+//                        }
+//                    });
+//                    explode.setDuration(1000);
+//                    TransitionManager.beginDelayedTransition(recyclerView, explode);
+//                }
+//
+//
+//                // remove all views from Recycler View
+//                recyclerView.setAdapter(null);
+//                return false;
+//            }
+//        });
         new TileColorData(tileList,tileAdapter,getActivity(),level);
         return rootView;
     }

@@ -5,7 +5,6 @@
     android:id="@+id/activity_splash_screen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color8"
     tools:context="com.finger.dance.activities.SplashScreen">
     <com.finger.dance.component.ui.RadialGradientView
         android:id="@+id/background"

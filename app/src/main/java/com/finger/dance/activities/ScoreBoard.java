@@ -15,7 +15,7 @@ import com.finger.dance.component.ui.RadialGradientView;
 import com.finger.dance.utils.ColorGradient;
 
 public class ScoreBoard extends AppCompatActivity {
-    private Button playAgain,calibrate;
+    private TextView playAgain,calibrate;
     private TextView winner;
     private RadialGradientView gradientView;
 
@@ -36,8 +36,8 @@ public class ScoreBoard extends AppCompatActivity {
         gradientView = (RadialGradientView) findViewById(R.id.background);
 
         ColorGradient.changeBackground(gradientView,this);
-        playAgain = (Button) findViewById(R.id.playagainBut);
-        calibrate = (Button) findViewById(R.id.calibrateBut);
+        playAgain = (TextView) findViewById(R.id.playagainBut);
+        calibrate = (TextView) findViewById(R.id.calibrateBut);
         winner = (TextView) findViewById(R.id.winnerTv);
         Intent intent = getIntent();
         String winnerString = intent.getStringExtra("winner");

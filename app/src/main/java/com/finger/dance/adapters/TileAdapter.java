@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Handler;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -47,10 +48,12 @@ public class TileAdapter extends RecyclerView.Adapter<TileAdapter.MyViewHolder> 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         public Button tileView;
+        public CardView cardView;
         public MyViewHolder(View view) {
             super(view);
 
             tileView = (Button) view.findViewById(R.id.tileView);
+            cardView = (CardView) view.findViewById(R.id.cardView);
         }
     }
 
