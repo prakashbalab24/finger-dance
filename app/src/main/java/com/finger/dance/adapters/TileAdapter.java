@@ -21,6 +21,8 @@ import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.finger.dance.R;
 import com.finger.dance.activities.ScoreBoard;
 import com.finger.dance.component.ui.RadialGradientView;
@@ -194,6 +196,9 @@ public class TileAdapter extends RecyclerView.Adapter<TileAdapter.MyViewHolder> 
 
     /** Genral method for intent **/
     private void startIntent(String winner){
+        if (!winner.equalsIgnoreCase("Match Draw")){
+            Toast.makeText(mContext,mContext.getString(R.string.wrong_des),Toast.LENGTH_SHORT).show();
+        }
         if(intentStarted!=-1) {
             GeneralUtils.playSound(AppConstants.WRONG_CLICK_SOUND,mContext);
             intentStarted = -1;

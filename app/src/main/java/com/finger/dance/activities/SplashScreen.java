@@ -21,6 +21,7 @@ public class SplashScreen extends AppCompatActivity {
     private RadialGradientView gradientView;
     private View name;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

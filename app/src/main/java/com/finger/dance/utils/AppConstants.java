@@ -12,4 +12,5 @@ public class AppConstants {
     public static final String SP_NAME = "FingerDancer";
     public static final int CLICK_SOUND = R.raw.click;
     public static final int WRONG_CLICK_SOUND = R.raw.wrongclick;
+    public static final int BGM = R.raw.gamebgm;
 }
