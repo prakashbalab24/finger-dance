@@ -5,6 +5,8 @@ import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Handler;
 import android.support.v7.widget.CardView;
@@ -22,6 +24,7 @@ import android.widget.TextView;
 import com.finger.dance.R;
 import com.finger.dance.activities.ScoreBoard;
 import com.finger.dance.component.ui.RadialGradientView;
+import com.finger.dance.utils.AppConstants;
 import com.finger.dance.utils.ColorGradient;
 import com.finger.dance.utils.GeneralUtils;
 import com.finger.dance.models.TileModel;
@@ -92,7 +95,7 @@ public class TileAdapter extends RecyclerView.Adapter<TileAdapter.MyViewHolder> 
             handler.post(r);
         }
         holder.tileView.setBackgroundColor(tileModel.getColor());
-        setFadeAnimation(holder.itemView);
+
 
         holder.tileView.setOnTouchListener(new View.OnTouchListener() {
 
@@ -137,12 +140,6 @@ public class TileAdapter extends RecyclerView.Adapter<TileAdapter.MyViewHolder> 
     }
 
 
-
-    private void setFadeAnimation(View view) {
-        AlphaAnimation anim = new AlphaAnimation(0.0f, 1.0f);
-        anim.setDuration(FADE_DURATION);
-        view.startAnimation(anim);
-    }
     /**method for maximum device pointer checking **/
     private boolean checkMaxPointReached(int pointerId){
         int value = GeneralUtils.getValueSharePref(mContext);
@@ -175,6 +172,7 @@ public class TileAdapter extends RecyclerView.Adapter<TileAdapter.MyViewHolder> 
 
     /** method for changing player turn **/
     private void togglePlayer(){
+        GeneralUtils.playSound(AppConstants.CLICK_SOUND,mContext);
         int num = GeneralUtils.randIntUnique(0, (level*level)-1);
         Log.i("randomnum",num+"");
 
@@ -197,6 +195,7 @@ public class TileAdapter extends RecyclerView.Adapter<TileAdapter.MyViewHolder> 
     /** Genral method for intent **/
     private void startIntent(String winner){
         if(intentStarted!=-1) {
+            GeneralUtils.playSound(AppConstants.WRONG_CLICK_SOUND,mContext);
             intentStarted = -1;
             Intent intent = new Intent((Activity) mContext, ScoreBoard.class);
             intent.putExtra("winner", winner);

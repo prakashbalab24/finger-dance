@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.support.v7.app.AlertDialog;
 import android.widget.LinearLayout;
 
@@ -126,6 +128,12 @@ public class GeneralUtils {
             }
         }
 
+    }
+
+    public static void playSound(int soundtoPlay,Context context){
+        MediaPlayer mPlayer = MediaPlayer.create(context, soundtoPlay);
+        mPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+        mPlayer.start();
     }
 
 
