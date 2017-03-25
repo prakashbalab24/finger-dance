@@ -33,6 +33,8 @@ import com.finger.dance.models.TileModel;
 
 import java.util.List;
 
+import static com.finger.dance.utils.SoundManager.playSound;
+
 /**
  * Created by prakash-bala on 21/2/17.
  */
@@ -174,7 +176,7 @@ public class TileAdapter extends RecyclerView.Adapter<TileAdapter.MyViewHolder> 
 
     /** method for changing player turn **/
     private void togglePlayer(){
-        GeneralUtils.playSound(AppConstants.CLICK_SOUND,mContext);
+       playSound(AppConstants.CLICK_SOUND,false);
         int num = GeneralUtils.randIntUnique(0, (level*level)-1);
         Log.i("randomnum",num+"");
 
@@ -200,7 +202,7 @@ public class TileAdapter extends RecyclerView.Adapter<TileAdapter.MyViewHolder> 
             Toast.makeText(mContext,mContext.getString(R.string.wrong_des),Toast.LENGTH_SHORT).show();
         }
         if(intentStarted!=-1) {
-            GeneralUtils.playSound(AppConstants.WRONG_CLICK_SOUND,mContext);
+            playSound(AppConstants.WRONG_CLICK_SOUND,false);
             intentStarted = -1;
             Intent intent = new Intent((Activity) mContext, ScoreBoard.class);
             intent.putExtra("winner", winner);

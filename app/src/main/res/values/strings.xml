@@ -14,4 +14,5 @@
     <string name="selectlevel">Select Level</string>
     <string name="instruction">Dont move or take your fingers from block.</string>
     <string name="store_points">Click store button to store MAXIMUM pointers.</string>
+    <string name="key_pref_music_volume">volume</string>
 </resources>

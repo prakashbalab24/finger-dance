@@ -16,6 +16,9 @@ import com.finger.dance.utils.AppConstants;
 import com.finger.dance.utils.ColorGradient;
 import com.finger.dance.utils.GeneralUtils;
 
+import static com.finger.dance.utils.SoundManager.inizializeAudio;
+import static com.finger.dance.utils.SoundManager.playSound;
+
 public class SplashScreen extends AppCompatActivity {
     int totalPointers;
     private RadialGradientView gradientView;
@@ -26,6 +29,7 @@ public class SplashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
+        inizializeAudio(this);
         name = findViewById(R.id.head);
         gradientView = (RadialGradientView) findViewById(R.id.background);
         ColorGradient.changeBackground(gradientView,this);
@@ -42,6 +46,7 @@ public class SplashScreen extends AppCompatActivity {
 
                     }
                     else {
+                        playSound(R.raw.gamebgm,true);
                         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
 /**Animation trying **/
 //      ActivityOptions options = ActivityOptions
